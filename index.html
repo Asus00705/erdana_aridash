@@ -58,10 +58,7 @@
             audio.pause();
             audioButton.innerHTML = '<img src="image/play.png" alt="Воспроизведение">';
         }
-        // Автоматически воспроизводить аудио при загрузке страницы
-        window.addEventListener('load', function() {
-            audio.play();
-        });
+
     }
     
 </script>
@@ -83,31 +80,6 @@
       right: 10px; /* Расстояние справа */
   }
 
-  /* Стили для изображения внутри кнопки */
-  #audio-button img {
-      max-width: 100%;
-      max-height: 90%;
-   /* Стили для изображения внутри кнопки */
-   #audio-button img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-        /* CSS для анимации появления кнопки */
-        @keyframes fadeIn {
-            from {
-                opacity: 0; /* Начальная непрозрачность: 0 */
-                transform: translateY(20px); /* Начальное положение: смещено вниз на 20px */
-            }
-            to {
-                opacity: 1; /* Конечная непрозрачность: 1 (полностью видимая) */
-                transform: translateY(0); /* Конечное положение: в исходное положение */
-            }
-        }
-
-        #audio-button.animate__animated {
-            animation: fadeIn 1s ease; /* Применяем анимацию с именем fadeIn, длительностью 1 секунда и функцией сглаживания ease */
-        }
   }
   
 </style>
