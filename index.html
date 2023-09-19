@@ -31,6 +31,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="js/jquery.coundown.js"></script>
   <link rel="icon" type="image/png" href="image/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23064379-20"></script>
   <!-- Begin Script for Countdown -->
@@ -45,28 +46,79 @@
 
   <!-- Github Button -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
-</head>
-
-<body class="has-navbar-fixed-bottom">
-  <!-- Begin Preloader -->
-  <audio id="background-music" autoplay loop>
-    <source src="https://www2.cs.uic.edu/~i101/SoundFiles/StarWars3.wav" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
-
-<script>
-    var music = document.getElementById('background-music');
-
-    window.addEventListener('load', function () {
-        music.play();
-    });
+  <script>
+    var audio = new Audio('hello.mp3'); // Замените 'путь_к_аудиофайлу.mp3' на фактический путь к вашему аудиофайлу
+  
+    function toggleAudio() {
+        var audioButton = document.getElementById('audio-button');
+        if (audio.paused) {
+            audio.play();
+            audioButton.innerHTML = '<img src="image/pause.png" alt="Пауза">';
+        } else {
+            audio.pause();
+            audioButton.innerHTML = '<img src="image/play.png" alt="Воспроизведение">';
+        }
+        // Автоматически воспроизводить аудио при загрузке страницы
+        window.addEventListener('load', function() {
+            audio.play();
+        });
+    }
+    
 </script>
+<style>
+  /* Убираем рамку */
+  button {
+    border: none;
+    outline: none;
+    background: none;
+    z-index: 999;
+}
+
+  /* Задаем размер кнопки */
+  #audio-button {
+      width: 80px; /* Замените на желаемую ширину */
+      height: 80px; /* Замените на желаемую высоту */
+      position: fixed;
+      bottom: 70px; /* Расстояние сверху */
+      right: 10px; /* Расстояние справа */
+  }
+
+  /* Стили для изображения внутри кнопки */
+  #audio-button img {
+      max-width: 100%;
+      max-height: 90%;
+   /* Стили для изображения внутри кнопки */
+   #audio-button img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* CSS для анимации появления кнопки */
+        @keyframes fadeIn {
+            from {
+                opacity: 0; /* Начальная непрозрачность: 0 */
+                transform: translateY(20px); /* Начальное положение: смещено вниз на 20px */
+            }
+            to {
+                opacity: 1; /* Конечная непрозрачность: 1 (полностью видимая) */
+                transform: translateY(0); /* Конечное положение: в исходное положение */
+            }
+        }
+
+        #audio-button.animate__animated {
+            animation: fadeIn 1s ease; /* Применяем анимацию с именем fadeIn, длительностью 1 секунда и функцией сглаживания ease */
+        }
+  }
+  
+</style>
+</head>
   <div class="preloader-wrapper">
     <div class="preloader">
       <img src="image/favicon.png" alt="Flower" />
     </div>
-
+    
   </div>
+  
   <!-- End Preloader-->
   <!-- Begin Header -->
   <div class="header-wrapper" id="home">
@@ -126,6 +178,9 @@
             <b>16:00</b>
           </h4>
           </h4>
+          <button id="audio-button" onclick="toggleAudio()" class="animate__animated">
+            <img src="image/play.png" alt="Воспроизведение">
+        </button>
           <!-- </div> -->
           <!-- Start Countdown -->
           <div>
@@ -176,6 +231,7 @@
           <!-- End Countdown -->  
         </div>
       </div>
+      
       <!-- End Hero Content-->
       <!-- Begin Hero Menu -->
       <!-- <div class="hero-foot ">
@@ -224,7 +280,7 @@
           <p class="bodytext has-text-centered">
             <!-- <div class="invite-main salam">Assalamualaikum Warahmatullahi Wabarakatuh</div> -->
           <div class="invite-main">
-            <h2>Құрметті қауым!</h2>
+            <h2><b>Құрметті қауым! </b> </h2>
             <em>"2023 жылдың 12 қарашасында біздің өміріміздегі ең маңызды мереке – үйлену тойымыз болатынын хабарлауға
               қуаныштымыз!
               Осы ұмытылмас күннің қуанышын бізбен бөлісуге шақырамыз!"</em>
@@ -233,7 +289,7 @@
           <div class="invite-main">
             Той иелері:
             <br>
-            Ниғат & Жанар
+           <b> Ниғат & Жанар </b>
           </div>
           </p>
         </div>
@@ -319,7 +375,6 @@
             <strong>Степногорск қаласы</strong>
             <br>
             "Жулдыз" мейрамханасы
-
           </p>
         </div>
 
@@ -329,8 +384,6 @@
             &nbsp;&nbsp;2gis
           </a>
         </div>
-
-
 
         <div class="section-map" data-aos="fade-up" data-aos-easing="linear">
           <iframe
